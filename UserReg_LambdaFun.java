@@ -16,6 +16,7 @@ public class UserReg_LambdaFun {
     static String passwordPattern = "^[a-zA-Z0-9]{8,}$";
     static String password1Pattern ="^[A-Z]{1}[A-Za-z0-9]{7,}$";
     static String password2Pattern ="^[A-Z]{1}[0-9]{1,}+[A-Za-z0-9]{6,}$";
+    static String password3Pattern ="^(.*[A-Z]{1,}.*[0-9]{1,}.*[~!@#$%^&*]?[A-Za-z0-9]{5,})$";
 
     // create an object of interface
     UserIsValid checkValid = (String pattern, String name) -> Pattern.matches(pattern, name);
@@ -83,6 +84,15 @@ public class UserReg_LambdaFun {
         }
     }
 
+    // method to check Password at least one special character is valid or not
+    public void passwordatleastonespecialcharacterIsValid(String password3) {
+        if (checkValid.mathPattern(password3Pattern, password3)) {
+            System.out.println("Password is Valid");
+        } else {
+            System.out.println("Please Enter a Valid Password: ");
+        }
+    }
+
     // main function
     public static void main(String[] args) {
         UserReg_LambdaFun lambda = new UserReg_LambdaFun();  //create an object
@@ -121,6 +131,11 @@ public class UserReg_LambdaFun {
         System.out.println("Enter Password at least one numeric number :");
         String password2 = sc.nextLine();
         lambda.passwordatleastonenumericnumIsValid(password2);
+
+        //For Password At least One special character in password
+        System.out.println("Enter Password at least one special character :");
+        String password3 = sc.nextLine();
+        lambda.passwordatleastonespecialcharacterIsValid(password3);
 
     }
 
