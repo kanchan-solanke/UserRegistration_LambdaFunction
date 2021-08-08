@@ -14,6 +14,7 @@ public class UserReg_LambdaFun {
     static String emailPattern ="^[a-zA-Z0-9.+_-]+[@][a-zA-Z0-9]+[.]co(m|.in)$";
     static String mobilePattern ="^([0-9]{2}) ([1-9]{1}[0-9]{9})$";
     static String passwordPattern = "^[a-zA-Z0-9]{8,}$";
+    static String password1Pattern ="^[A-Z]{1}[A-Za-z0-9]{7,}$";
     // create an object of interface
     UserIsValid checkValid = (String pattern, String name) -> Pattern.matches(pattern, name);
 
@@ -62,6 +63,15 @@ public class UserReg_LambdaFun {
         }
     }
 
+    // method to check Password is valid or not
+    public void passwordatleastoneuppercaseIsValid(String password1) {
+        if (checkValid.mathPattern(passwordPattern, password1)) {
+            System.out.println("Password is Valid");
+        } else {
+            System.out.println("Please Enter a Valid Password: ");
+        }
+    }
+
     // main function
     public static void main(String[] args) {
         UserReg_LambdaFun lambda = new UserReg_LambdaFun();  //create an object
@@ -90,6 +100,11 @@ public class UserReg_LambdaFun {
         System.out.println("Enter Password :");
         String password = sc.nextLine();
         lambda.passwordIsValid(password);
+
+        //For Password At least One Upper Case
+        System.out.println("Enter Password at least one upper case :");
+        String password1 = sc.nextLine();
+        lambda.passwordatleastoneuppercaseIsValid(password1);
 
     }
 
