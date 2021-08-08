@@ -13,6 +13,7 @@ public class UserReg_LambdaFun {
     static String lastnamePattern = "^[A-Z]{1}+[a-z]{3,}$";
     static String emailPattern ="^[a-zA-Z0-9.+_-]+[@][a-zA-Z0-9]+[.]co(m|.in)$";
     static String mobilePattern ="^([0-9]{2}) ([1-9]{1}[0-9]{9})$";
+    static String passwordPattern = "^[a-zA-Z0-9]{8,}$";
     // create an object of interface
     UserIsValid checkValid = (String pattern, String name) -> Pattern.matches(pattern, name);
 
@@ -52,6 +53,15 @@ public class UserReg_LambdaFun {
         }
     }
 
+    // method to check Password is valid or not
+    public void passwordIsValid(String password) {
+        if (checkValid.mathPattern(passwordPattern, password)) {
+            System.out.println("Password is Valid");
+        } else {
+            System.out.println("Please Enter a Valid Password: ");
+        }
+    }
+
     // main function
     public static void main(String[] args) {
         UserReg_LambdaFun lambda = new UserReg_LambdaFun();  //create an object
@@ -75,6 +85,11 @@ public class UserReg_LambdaFun {
         System.out.println("Enter Mobile Number :");
         String mobilenum = sc.nextLine();
         lambda.mobileIsValid(mobilenum);
+
+        //For Password
+        System.out.println("Enter Password :");
+        String password = sc.nextLine();
+        lambda.passwordIsValid(password);
 
     }
 
