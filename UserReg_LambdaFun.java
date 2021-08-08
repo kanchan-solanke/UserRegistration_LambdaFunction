@@ -15,6 +15,8 @@ public class UserReg_LambdaFun {
     static String mobilePattern ="^([0-9]{2}) ([1-9]{1}[0-9]{9})$";
     static String passwordPattern = "^[a-zA-Z0-9]{8,}$";
     static String password1Pattern ="^[A-Z]{1}[A-Za-z0-9]{7,}$";
+    static String password2Pattern ="^[A-Z]{1}[0-9]{1,}+[A-Za-z0-9]{6,}$";
+
     // create an object of interface
     UserIsValid checkValid = (String pattern, String name) -> Pattern.matches(pattern, name);
 
@@ -65,7 +67,16 @@ public class UserReg_LambdaFun {
 
     // method to check Password is valid or not
     public void passwordatleastoneuppercaseIsValid(String password1) {
-        if (checkValid.mathPattern(passwordPattern, password1)) {
+        if (checkValid.mathPattern(password1Pattern, password1)) {
+            System.out.println("Password is Valid");
+        } else {
+            System.out.println("Please Enter a Valid Password: ");
+        }
+    }
+
+    // method to check Password at least one numeric value is valid or not
+    public void passwordatleastonenumericnumIsValid(String password2) {
+        if (checkValid.mathPattern(password2Pattern, password2)) {
             System.out.println("Password is Valid");
         } else {
             System.out.println("Please Enter a Valid Password: ");
@@ -105,6 +116,11 @@ public class UserReg_LambdaFun {
         System.out.println("Enter Password at least one upper case :");
         String password1 = sc.nextLine();
         lambda.passwordatleastoneuppercaseIsValid(password1);
+
+        //For Password At least One Numeric Number in password
+        System.out.println("Enter Password at least one numeric number :");
+        String password2 = sc.nextLine();
+        lambda.passwordatleastonenumericnumIsValid(password2);
 
     }
 
