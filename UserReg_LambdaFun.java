@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+@FunctionalInterface
+interface UserIsValid {
+    boolean mathPattern(String pattern, String name);
+}
+
+public class UserReg_LambdaFun {
+    static String namePattern = "^[A-Z]{1}+[a-z]{3,}$";
+    UserIsValid checkValid = (String pattern, String name) -> Pattern.matches(pattern, name);
+
+    public void nameIsValid(String name){
+            if (checkValid.mathPattern(namePattern, name)) {
+                System.out.println("Name is Valid");
+            } else {
+                System.out.println("Please Enter a Valid First name: ");
+            }
+    }
+
+    public static void main(String[] args) {
+        UserReg_LambdaFun lambda = new UserReg_LambdaFun();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter first name:");
+        String fname = sc.nextLine();
+        lambda.nameIsValid(fname);
+    }
+        }
